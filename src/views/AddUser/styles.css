@@ -1,0 +1,19 @@
+.App {
+    text-align: center;
+  }
+  .App-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: rgb(218, 50, 50);
+  }
+
+  .main {
+    display:flex; 
+    flex-direction:row;
+    width: '50px';
+  }
+
+  .sidea{
+    width: '50px';
+  }
