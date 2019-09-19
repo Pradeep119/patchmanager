@@ -1,1 +1,394 @@
-
+{
+	"info": {
+		"_postman_id": "3d87ce13-8b3e-4a2e-a124-b5f15785db3c",
+		"name": "ToolingPatchMgt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "tokengenerate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"username\":\"sheshan@apigate.com\",\n\t\"password\":\"sh123\"\n\t\n\t\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/token/generate-token",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"token",
+						"generate-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "viewuser",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4MTIzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJodHRwOi8vZGV2Z2xhbi5jb20iLCJpYXQiOjE1Njg1NjYwNzUsImV4cCI6MTU2ODU4NDA3NX0.h2jjD9DUZ7DlOtnyIHK0uJbyIpiLXZoRlJv4mEcc3yc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/users/allusers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"allusers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createuser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGVzaGFuQGFwaWdhdGUuY29tIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJodHRwOi8vZGV2Z2xhbi5jb20iLCJpYXQiOjE1Njg4ODg5MjcsImV4cCI6MTU2ODkwNjkyN30.9O_u8RJ71u5d30YUybP7e36TLI4FOfsE_VtTI-wJJ7w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"username\":\"dialan@apigate.com2\",\n\t\"password\":\"di123\",\n\t\"firstName\":\"dilan\",\n\t\"lastName\":\"N\",\n\t\"usertype\":\"tester\"\n\t\n\t\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/users/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allpatches",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4MTIzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJodHRwOi8vZGV2Z2xhbi5jb20iLCJpYXQiOjE1Njg1NjYwNzUsImV4cCI6MTU2ODU4NDA3NX0.h2jjD9DUZ7DlOtnyIHK0uJbyIpiLXZoRlJv4mEcc3yc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/patch/allpatches",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"patch",
+						"allpatches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "onepatch",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/getonepatch/param?id=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getonepatch",
+						"param"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patchbyid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/getbyname?patch_id=patch_dep00008",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getbyname"
+					],
+					"query": [
+						{
+							"key": "patch_id",
+							"value": "patch_dep00008"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allusers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4MTIzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJodHRwOi8vZGV2Z2xhbi5jb20iLCJpYXQiOjE1Njg1NjYwNzUsImV4cCI6MTU2ODU4NDA3NX0.h2jjD9DUZ7DlOtnyIHK0uJbyIpiLXZoRlJv4mEcc3yc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/users/allusers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"allusers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allproducts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4MTIzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJodHRwOi8vZGV2Z2xhbi5jb20iLCJpYXQiOjE1Njg1NjYwNzUsImV4cCI6MTU2ODU4NDA3NX0.h2jjD9DUZ7DlOtnyIHK0uJbyIpiLXZoRlJv4mEcc3yc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/patch/allproducts",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"patch",
+						"allproducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getaproduct",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4MTIzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJodHRwOi8vZGV2Z2xhbi5jb20iLCJpYXQiOjE1Njg1NjYwNzUsImV4cCI6MTU2ODU4NDA3NX0.h2jjD9DUZ7DlOtnyIHK0uJbyIpiLXZoRlJv4mEcc3yc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/patch/getabook?id=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"patch",
+						"getabook"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveapatch",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4MTIzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJodHRwOi8vZGV2Z2xhbi5jb20iLCJpYXQiOjE1Njg1NjYwNzUsImV4cCI6MTU2ODU4NDA3NX0.h2jjD9DUZ7DlOtnyIHK0uJbyIpiLXZoRlJv4mEcc3yc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patch_id\": \"patch_dep00091\",\n    \"date\": \"2019-01-01 00:00:00.0\",\n    \"developer_name\": \"Pradeepkk\",\n    \"git_tag\": \"v2.0.4-00025\",\n    \"componnents\": \"smsapigw_capp_2.0.0.car\",\n    \"project_name\": \"Component-dep\",\n    \"bundle_name\": \"WSO2Telco-component-dep-2.4.2-00028\",\n    \"support_jira_id\": \"INTGW-311\",\n    \"merged_to_support\": \"yes\",\n    \"merged_to_master\": \"no\",\n    \"public_jira_id\": \"INTGW-300\",\n    \"priority\": \"high\",\n    \"description\": \"this is test 001\",\n    \"email\": \"pradeeponlineto@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/patch/2/book",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"patch",
+						"2",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getuserdetail",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4QGFwaWdhdGUuY29tIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJodHRwOi8vZGV2Z2xhbi5jb20iLCJpYXQiOjE1Njg3NDYyNTksImV4cCI6MTU2ODc2NDI1OX0.LHreZ6hiwMQbAwaXVjX80ToRniDi_Ncx5INIApCh-Xk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"alex@apigate.com\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/users/get-user-detail",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"get-user-detail"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
