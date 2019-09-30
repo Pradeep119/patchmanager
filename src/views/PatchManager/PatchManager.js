@@ -1,64 +1,100 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+import { textAlign } from '@material-ui/system';
+import Icon from '@material-ui/core/Icon';
 import './styles.css';
-import axios from 'axios';
+import { MDBIcon } from 'mdbreact';
 
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
-export default class PatchManager extends Component {
+import PopupModal from '../../containers/PopUpModal/PopUpModal'
 
-  constructor(props) {
-    super(props);
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
+  }
+};
+
+export default class PatchManager extends React.Component {
+  constructor() {
+    super();
+
     this.state = {
-      dataarray: 0,
+      modalIsOpen: false
     };
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-//   async componentDidMount() {
-
-//     var headersparam = { 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4QGFwaWdhdGUuY29tIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJodHRwOi8vZGV2Z2xhbi5jb20iLCJpYXQiOjE1Njg3NDY5OTAsImV4cCI6MTU2ODc2NDk5MH0.vCKW5vU7rtLCQkLnl2yqIezKawuLkwQSRt7oWwYmITE' } 
-
-
-//     const response = await axios.post(
-//       'http://localhost:8080/token/generate-token',
-//       {
-//         "username":"alex@apigate.com",
-//         "password":"alex123"
-//       },
-//       { headers: headersparam }
-//     )
-//     console.log(response.data)
-
-//     var obj= response.data
-
-//     var token = obj.result.token
-//     var username = obj.result.username
+  openModal() {
+    this.setState({ modalIsOpen: true });
+  }
 
 
-//     localStorage.setItem('token' , token)
-//     console.log("token is",token)
-//     console.log("username is",username)
-  
-// }
 
+  closeModal() {
+    this.setState({ modalIsOpen: false });
+  }
 
   render() {
     return (
-      
-      <div className="App">
-        
-        
-        <div className="App-header">
-        <h1 > Patch Manager</h1>
-        </div>
+      <div>
+        <button onClick={this.openModal}>Open Modal</button>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+          overlayClassName="overlay"
+        >
 
-        <p className="App-intro">
-          Im patchManager <code>src/App.js</code> and save to reload.
-          
-        </p>
+          <PopupModal
+            closeModal={this.closeModal}
+            ModalMessage="im in a body . ashiubf salfkjasbdljs asdl dsf dsf sd ffsg df hhdgdfg f gd"
+          />
 
-    </div>
-
+        </Modal>
+      </div>
     );
   }
 }
+
+// ReactDOM.render(<PatchManager />, PatchManager);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

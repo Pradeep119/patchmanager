@@ -23,3 +23,7 @@ body {
   white-space: pre-wrap;
 }
 
+.container {
+  max-width: 1338px !important;
+}
+

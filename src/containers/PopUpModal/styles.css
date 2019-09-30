@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* body {
+  font-family: 'Josefin Sans', cursive;
+} */
+
+.App {
+    text-align: center;
+  }
+  .App-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: rgb(117, 224, 16);
+  }
+
+
+.overlay{
+  background: rgba(134, 129, 129, 0.7);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.MainDiv{
+  width: 300px; 
+  height: 150px 
+}
+
+.HeaderDiv{
+  flex: 1; 
+  flex-direction: row; 
+  display: flex; 
+  border: 2px;
+  border-bottom-color: rgba(0,0,0,0.100); 
+}
+
+.MessageTitleError{
+  font-style: bold;
+  color:rgba(255, 13, 13, 0.719)  
+}
+
+.MessageTitleSuccess{
+  font-style: bold;
+  color:rgba(79, 158, 6, 0.719)  
+}
+
+.CloseIcon{
+  flex: 1;
+  text-align: right; 
+  padding: 5px 
+}
+
+.CloseButton{
+  flex:1;
+  align-items:right;
+  text-align: right; 
+}
+
+.MessageContentError{
+  color:rgba(0, 0, 0, 0.7)
+}
+
+.MessageContentSuccess{
+  color:rgba(0, 70, 0, 0.7)
+}

@@ -1,0 +1,45 @@
+.App {
+    text-align: center;
+
+  }
+  .App-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: rgb(233, 10, 196);
+  }
+
+  .ComboBoxDiv{
+    display: flex; 
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    background-color: rgb(223, 207, 207);
+    padding: 30px
+  }
+
+  .SubmitBtnDiv{
+  /*   width: window.innerWidth / 2; 
+    color: 'green' */
+    width: 450%;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display:flex;
+    flex-direction:row
+  }
+
+  .submitBtn{
+    width:100%;
+    /* margin: auto; */
+  }
+
+  .ComboBoxDiv{
+    display:flex; 
+    flex-direction:row
+  }
+
+  .HeadingLabel{
+    margin:auto
+  }
