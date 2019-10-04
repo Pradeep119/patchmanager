@@ -11,7 +11,8 @@ import org.telco.tool.service.UserService;
 import java.util.Base64;
 import java.util.List;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/users")
 public class UserController {

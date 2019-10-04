@@ -30,7 +30,7 @@ CREATE TABLE `user` (
   `username` varchar(45) DEFAULT NULL,
   `usertype` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Alex','Knr','$2a$04$4vwa/ugGbBVDvbWaKUVZBuJbjyQyj6tqntjSmG8q.hi97.xSdhj/2','alex@apigate.com','admin'),(5,'sheshan','s','$2a$10$dbkD1UydwpA6EQOZ71/1F.m0UqT4DVQwA6eHboMOmInP7XuENASeu','sheshan@apigate.com','tester'),(6,'ishara','dy','$2a$10$xiBE.TCxypfxZEi/vqs9/e3A75kszq84XIncnGxTg5Tkj4vC9KZlC','ishara.dayarathna@apigate.com','dev'),(7,'pradeep','karunathialaka','$2a$10$5xjzx0iN7LFKDfYPOzuSzuNgM.ahCJQhvqFOljtf/PgyDK1wk2prC','pradeep.karunathilaka@apigate.com','dev'),(8,'shan','J','$2a$10$HvuqwV3/EsjREyM5itSqpeEmbFLRKy2W6oHbxHrRa/HEW/P1YvMpe','shan.jayathilaka@apigate.com','dev'),(9,'lahiru','S','$2a$10$N3c0XZjJu505pn11tiNwvetE.kpzBc885qoKETp6SAWpyXAQfS7mu','lahiru.senadheera@apigate.com','admin'),(10,'dilan','N','$2a$10$TToEZaHkhknP4vMM7JdpW.lH/1CM9ugSr3du9CtEGOiKHwFeQjSkW','dialan@apigate.com','tester'),(11,NULL,NULL,'$2a$10$RFWy4GkC20Yoe2bISrLh/uU1YZfiQzMboWSxc5kr5s0G0vaKbLTTq','sampleuser@apigate.com','dev'),(12,'sample2','lastname2','$2a$10$2Bx..bRreCr7sKUqI./C7ODVgCWew6nOiB4ksI.6WWBfkLKLI/ooO','sample2@apigate.com','tester'),(13,'dilan','N','$2a$10$pVbaqMpxBT6cxdS/.d9qnOZGTeT11/YdX8QgchQIS2m008un1sOri','dialan@apigate.com2','tester'),(14,'k','w','$2a$10$Pk/7XO4Nbp2RkBUUUv.UWuFjnWT3LBogE7nlN5d4glCTkEPBZiVnS','pk@gmail.com','dev');
+INSERT INTO `user` VALUES (1,'Alex','Knr','$2a$04$4vwa/ugGbBVDvbWaKUVZBuJbjyQyj6tqntjSmG8q.hi97.xSdhj/2','alex@apigate.com','admin'),(5,'sheshan','s','$2a$10$dbkD1UydwpA6EQOZ71/1F.m0UqT4DVQwA6eHboMOmInP7XuENASeu','sheshan@apigate.com','tester'),(6,'ishara','dy','$2a$10$xiBE.TCxypfxZEi/vqs9/e3A75kszq84XIncnGxTg5Tkj4vC9KZlC','ishara.dayarathna@apigate.com','dev'),(7,'pradeep','karunathialaka','$2a$10$5xjzx0iN7LFKDfYPOzuSzuNgM.ahCJQhvqFOljtf/PgyDK1wk2prC','pradeep.karunathilaka@apigate.com','admin'),(8,'shan','J','$2a$10$HvuqwV3/EsjREyM5itSqpeEmbFLRKy2W6oHbxHrRa/HEW/P1YvMpe','shan.jayathilaka@apigate.com','dev'),(9,'lahiru','S','$2a$10$N3c0XZjJu505pn11tiNwvetE.kpzBc885qoKETp6SAWpyXAQfS7mu','lahiru.senadheera@apigate.com','admin'),(10,'dilan','N','$2a$10$TToEZaHkhknP4vMM7JdpW.lH/1CM9ugSr3du9CtEGOiKHwFeQjSkW','dialan@apigate.com','tester'),(11,NULL,NULL,'$2a$10$RFWy4GkC20Yoe2bISrLh/uU1YZfiQzMboWSxc5kr5s0G0vaKbLTTq','sampleuser@apigate.com','dev'),(12,'sample2','lastname2','$2a$10$2Bx..bRreCr7sKUqI./C7ODVgCWew6nOiB4ksI.6WWBfkLKLI/ooO','sample2@apigate.com','tester'),(13,'dilan','N','$2a$10$pVbaqMpxBT6cxdS/.d9qnOZGTeT11/YdX8QgchQIS2m008un1sOri','dialan@apigate.com2','tester'),(14,'k','w','$2a$10$Pk/7XO4Nbp2RkBUUUv.UWuFjnWT3LBogE7nlN5d4glCTkEPBZiVnS','pk@gmail.com','dev'),(17,'zxc','zxc','$2a$10$gfU2ngN8hUlaOhGjFoJxVeJU3lRgl5KS.qpwX5Crsd6QMphSFqjym','xzc','dev'),(18,'asd','asd','$2a$10$pANJs6xo/vyKundUK/wQguiFkSjSnsra/cSZAbhCyn9Jw7phwsaUC','asd','tester'),(19,'','','$2a$10$cDbdpX7JIU2SNKtIOp58xuH6ceMoldy8SkKcWnHxeHUub.whzXVle','dd',''),(20,'','','$2a$10$F7L6DyHq6wCmYfBiE.0HG.4Dl55OaSFn5XISmi/Tw6f//MpzawrzG','dd',''),(21,'','','$2a$10$T9GWH/TNge2aJMxXsuWMHudngG7E1sl033ZQDiRsDGWkMXC9k0hfS','s',''),(22,'asd','asd','$2a$10$He1.t25Ze1AtXO8OrwbHIO.FHpoUR8Vj/emKUp1ke0atdxdjiSsA.','asd@apigate.com','tester');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-19 16:32:36
+-- Dump completed on 2019-10-04 12:03:25

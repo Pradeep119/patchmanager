@@ -33,6 +33,7 @@ public class Patch {
 	private String priority;
 	private String description;
 	private String email;
+	private String patchstatus;
 	
 	//@JsonManagedReference
 	@ManyToOne
@@ -46,7 +47,7 @@ public class Patch {
 
 	public Patch(int id, String patch_id, String date, String developer_name, String git_tag, String componnents,
 			String project_name, String bundle_name, String support_jira_id, String merged_to_support,
-			String merged_to_master, String public_jira_id, String priority, String description, String email,
+			String merged_to_master, String public_jira_id, String priority, String description, String email, String patchstatus,
 			Product product) {
 		super();
 		this.id = id;
@@ -65,6 +66,7 @@ public class Patch {
 		this.description = description;
 		this.email = email;
 		this.product = product;
+		this.patchstatus = patchstatus;
 	}
 
 	public int getId() {
@@ -187,6 +189,14 @@ public class Patch {
 		this.email = email;
 	}
 
+	public String getPatchstatus() {
+		return patchstatus;
+	}
+
+	public void setPatchstatus(String patchstatus) {
+		this.patchstatus = patchstatus;
+	}
+
 	public Product getProduct() {
 		return product;
 	}
@@ -194,6 +204,10 @@ public class Patch {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
+	
+
+	
 	
 	
 	

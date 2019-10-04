@@ -13,7 +13,8 @@ import org.telco.tool.config.JwtTokenUtil;
 import org.telco.tool.model.*;
 import org.telco.tool.service.UserService;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/token")
 public class AuthenticationController {
