@@ -17,4 +17,12 @@ public class ProductServiceImpl {
 	public List<Product> getAllProducts(){
 		return (List<Product>) productDao.findAll();
 	}
+	
+	public List<String> getDistinctProductList(){
+		return (List<String>) productDao.getAllDistinctProducts();
+	}
+	
+	public String getPatchNameforProduct(String productName) {
+		return productDao.getpatchNameByProduct(productName);
+	}
 }

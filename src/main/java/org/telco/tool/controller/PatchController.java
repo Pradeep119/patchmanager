@@ -24,15 +24,26 @@ import org.telco.tool.dao.PatchDao;
 import org.telco.tool.dao.ProductDao;
 import org.telco.tool.model.Patch;
 import org.telco.tool.model.Product;
+import org.telco.tool.service.impl.PatchServiceImpl;
 import org.telco.tool.service.impl.ProductServiceImpl;
+import org.telco.tool.util.DateUtil;
+import org.telco.tool.util.RequestValidator;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/patch")
 public class PatchController {
 
+	private final String REQUEST_PARAM_ERROR_DATE = "Error : Invalid Date Format";
+
+	@Autowired
+	RequestValidator tecloRequestValidator;
 	@Autowired
 	ProductServiceImpl ProductServiceImpl;
+	@Autowired
+	PatchServiceImpl patchServiceImpl;
+	@Autowired
+	DateUtil telcodateUtil;
 
 	@Autowired
 	PatchDao patchDao;
@@ -55,53 +66,42 @@ public class PatchController {
 		return (List<Patch>) patchDao.findAll();
 	}
 
-	@GetMapping("/pendingpatches")
-	public List<Patch> getPendingPatches() {
-		return (List<Patch>) patchDao.findPendingPatches();
-	}
-
-	@GetMapping("/pendingpatchids")
-	public List<String> getPendingPatchId() {
-		return (List<String>) patchDao.findPendingPatchids();
-	}
-
-	@GetMapping("/patches/update/{patch_id}/{patchstatus}")
-	public ResponseEntity<String> updatePatch(@PathVariable("patch_id") String patch_id,
-			@PathVariable("patchstatus") String patchstatus) {
-
-		Patch patch = new Patch();
-		patch.setPatch_id(patch_id);
-		patch.setPatchstatus(patchstatus);
-		patchDao.updateApproveStatues(patchstatus , patch_id);
-		return new ResponseEntity<String>("Success" , HttpStatus.OK);
-	}
-
-	@GetMapping("getabook")
+	@GetMapping("/all/patches")
 	@ResponseBody
-	public ResponseEntity<Patch> getArticleByIdParam(@RequestParam Integer id) {
+	public ResponseEntity<Patch> getDistinctPatches(@RequestParam Integer id) {
 		Patch patch = patchDao.findById(id).get();
 		return new ResponseEntity<Patch>(patch, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/{libraryId}/book", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Patch createBook(@PathVariable(value = "libraryId") Integer libraryId, @RequestBody Patch book) {
-
-		List<Patch> books = new ArrayList<Patch>();
-		Product author1 = new Product();
-
-		Optional<Product> byId = ProductDao.findById(libraryId);
-
-		Product author = byId.get();
-
-		// tie Author to Book
-		book.setProduct(author);
-
-		Patch book1 = patchDao.save(book);
-
-//		        //tie Book to Author
-		books.add(book1);
-		author1.setBooks((List<Patch>) books);
-
-		return book1;
+	@GetMapping("/generate")
+	@ResponseBody
+	public ResponseEntity<String> generatePatchId(@RequestParam String productName) {
+		String nextNumber = patchServiceImpl.getNextPatchId(productName);
+		String patchName = ProductServiceImpl.getPatchNameforProduct(productName);
+		String generatedPatchNumber = patchName + nextNumber;
+		return new ResponseEntity<String>(generatedPatchNumber, HttpStatus.OK);
 	}
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> savePatchDetails(@RequestBody Patch patch) {
+		String validRequestMessage = tecloRequestValidator.validatePatchSaveRequest(patch);
+		if (validRequestMessage == null) {
+			Product patchingProduct = ProductDao.getpatchIdByProductName(patch.getProject_name());
+			patch.setProduct(patchingProduct);
+			String formatedDate = telcodateUtil.convertDatetoSimpleDate(patch.getDate());
+			if (formatedDate != null) {
+				patch.setDate(formatedDate);
+				patchDao.save(patch);
+				return new ResponseEntity<String>("Patch Saved", HttpStatus.OK);
+			} else {
+				return new ResponseEntity<String>(REQUEST_PARAM_ERROR_DATE, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		} else {
+			return new ResponseEntity<String>(validRequestMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
+
 }
