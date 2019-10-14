@@ -21,7 +21,6 @@ public class Patch {
 	private String patch_id;
 	private String date;
 	private String developer_name;
-//	private int product_id;
 	private String git_tag;
 	private String componnents;
 	private String project_name;
