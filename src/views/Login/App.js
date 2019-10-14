@@ -155,6 +155,7 @@ class App extends Component {
     // var headers = { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('token') }
     var data = await getApi(url, headers)
     localStorage.setItem('usertype', data.result.token)
+    localStorage.setItem('uname', data.result.username)
     this.setState({
       db_user_usertype: data.result.usertype,
       db_user_useremail: data.result.username
