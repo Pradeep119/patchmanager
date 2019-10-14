@@ -3,6 +3,9 @@ package org.telco.tool.util;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 
@@ -13,20 +16,15 @@ public class DateUtil {
 
 	
 	public String convertDatetoSimpleDate(String dateString) {
-       String formatedDateString = null;
 		try {
-            System.out.println("~~~~~~~~~~"+dateString);
-            DateFormat srcDf = new SimpleDateFormat("E MMM dd yyyy HH:mm:ss 'GMT'z", Locale.ENGLISH);
-            Date date = srcDf.parse(dateString);
-            DateFormat destDf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            formatedDateString = destDf.format(date);
-            return formatedDateString;
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return formatedDateString;
-        }    
-		
-		
-        
+		DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+		DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+		LocalDateTime  date = LocalDateTime.parse(dateString, inputFormatter);
+		return outputFormatter.format(date);         
+		}
+		catch(Exception e){
+			System.out.println("Error" + e.getMessage());
+			return null;
+		}
 	}
 }

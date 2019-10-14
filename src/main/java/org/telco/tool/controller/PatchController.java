@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.telco.tool.dao.PatchDao;
 import org.telco.tool.dao.ProductDao;
+import org.telco.tool.model.ApiResponse;
 import org.telco.tool.model.Patch;
 import org.telco.tool.model.Product;
 import org.telco.tool.service.impl.PatchServiceImpl;
@@ -84,7 +85,7 @@ public class PatchController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<String> savePatchDetails(@RequestBody Patch patch) {
+	public ApiResponse<Void> savePatchDetails(@RequestBody Patch patch) {
 		String validRequestMessage = tecloRequestValidator.validatePatchSaveRequest(patch);
 		if (validRequestMessage == null) {
 			Product patchingProduct = ProductDao.getpatchIdByProductName(patch.getProject_name());
@@ -93,12 +94,12 @@ public class PatchController {
 			if (formatedDate != null) {
 				patch.setDate(formatedDate);
 				patchDao.save(patch);
-				return new ResponseEntity<String>("Patch Saved", HttpStatus.OK);
+				 return new ApiResponse<>(HttpStatus.OK.value(), "Patch Saved successfully.", null);
 			} else {
-				return new ResponseEntity<String>(REQUEST_PARAM_ERROR_DATE, HttpStatus.INTERNAL_SERVER_ERROR);
+				return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), REQUEST_PARAM_ERROR_DATE, null);
 			}
 		} else {
-			return new ResponseEntity<String>(validRequestMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), validRequestMessage, null);
 		}
 
 	}

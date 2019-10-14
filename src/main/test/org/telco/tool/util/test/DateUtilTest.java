@@ -16,7 +16,7 @@ public class DateUtilTest {
 	
 	@Test
 	public void testDateForamt() {
-		System.out.println(dateTestUtil.convertDatetoSimpleDate("Fri Oct 04 2019 12:00:00 GMT+0530 (India Standard Time)"));
+		System.out.println(dateTestUtil.convertDatetoSimpleDate("2019-10-11T06:30:00.000Z"));
 		//
 		
 	}
