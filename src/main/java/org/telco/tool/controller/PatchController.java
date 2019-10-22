@@ -74,6 +74,35 @@ public class PatchController {
 		return new ResponseEntity<Patch>(patch, HttpStatus.OK);
 	}
 
+	@GetMapping("/pendingpatches")
+	public List<Patch> getPendingPatches(){
+		return (List<Patch>) patchDao.findPendingPatches();
+	}
+
+	@GetMapping("/pendingpatchids")
+	public List<String> getPendingPatchId() {
+		return (List<String>) patchDao.findPendingPatchids();
+	}
+
+	@GetMapping("/patches/update/{patch_id}/{patchstatus}")
+	public ResponseEntity<String> updatePatch(@PathVariable("patch_id") String patch_id,
+											  @PathVariable("patchstatus") String patchstatus) {
+
+		Patch patch = new Patch();
+		patch.setPatch_id(patch_id);
+		patch.setPatchstatus(patchstatus);
+		int val = patchDao.updateApproveStatues(patchstatus , patch_id);
+
+		if(val == 1){
+			return new ResponseEntity<String>("Success" , HttpStatus.OK);
+		}else{
+			return new ResponseEntity<String>("Failed" , HttpStatus.OK);
+		}
+
+
+
+	}
+
 	@GetMapping("/generate")
 	@ResponseBody
 	public ResponseEntity<String> generatePatchId(@RequestParam String productName) {

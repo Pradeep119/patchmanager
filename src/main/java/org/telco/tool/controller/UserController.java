@@ -22,6 +22,9 @@ public class UserController {
 
     @PostMapping("/signup")
     public ApiResponse<User> saveUser(@RequestBody UserDto user){
+
+        System.out.println(userService.save(user));
+
         return new ApiResponse<>(HttpStatus.OK.value(), "User saved successfully.",userService.save(user));
     }
 
@@ -50,10 +53,8 @@ public class UserController {
     
     @GetMapping("me/{email}")
     public ApiResponse<User> getOne(@PathVariable String email){
-    	
 
-    	
-//    	String output= email.replaceAll("[-]", "");
+
     	
     	System.out.println("---------------- Email issss :"+email);
     	
