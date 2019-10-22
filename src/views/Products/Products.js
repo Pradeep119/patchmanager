@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles.css';
+// import './styles.css';
 import DataTable from 'react-data-table-component';
 import { getApi } from '../../config/Api'
 import { productcoloumn } from '../../util/Constants'

@@ -7,7 +7,7 @@ import { users } from '../../util/Constants'
 import { adduserurl, headers } from '../../config/ApiUrl'
 import Modal from 'react-modal';
 import PopupModal from '../../containers/PopUpModal/PopUpModal'
-import { customStyles} from '../../util/Constants'
+import { customStyles } from '../../util/Constants'
 
 
 class AddUser extends Component {
@@ -49,17 +49,25 @@ class AddUser extends Component {
 
     var postbody = {
       "username": this.state.username,
-      "password": this.state.password,
+      "password": "",
       "firstName": this.state.firstname,
       "lastName": this.state.lastname,
       "usertype": this.state.usertype
     }
 
     if (this.validateBody(postbody) === true) {
-      var data = await postApi(adduserurl, postbody, headers)
-      if (data.status == 200) {
-        this.setState({ modalIsOpen: true, ModalTypeError: false, ModalMessage: 'User Added Successfully' });
+
+      if (postbody.usertype === 'admin' || postbody.usertype === 'dev' || postbody.usertype === 'tester') {
+        
+        var data = await postApi(adduserurl, postbody, headers)
+        if (data.status == 200) {
+          window.location.reload();
+          this.setState({ modalIsOpen: true, ModalTypeError: false, ModalMessage: 'User Added Successfully' });
+        }
+      } else {
+        this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'User Type is incorrect' });
       }
+
     }
 
   }
@@ -68,10 +76,12 @@ class AddUser extends Component {
     if (postbody.username === undefined || postbody.username === null || postbody.username === '' || !postbody.username.includes("@")) {
       this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'Please Check Username' });
       return false
-    } else if (postbody.password === undefined || postbody.password === null || postbody.password === '') {
-      this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'Please Check Password' });
-      return false
-    } else if (postbody.firstName === undefined || postbody.firstName === null || postbody.firstName === '') {
+    }
+    //  else if (postbody.password === undefined || postbody.password === null || postbody.password === '') {
+    //   this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'Please Check Password' });
+    //   return false
+    // }
+    else if (postbody.firstName === undefined || postbody.firstName === null || postbody.firstName === '') {
       this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'Please Check FirstName' });
       return false
     } else if (postbody.usertype === undefined || postbody.usertype === null || postbody.usertype === '') {
@@ -81,7 +91,7 @@ class AddUser extends Component {
       this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'Please Check Username' });
       return false
     } else if (!postbody.username.includes("@apigate.com")) {
-      this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'This is Not Apigate Email' });
+      this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'This is not an apigate email' });
       return false
     } else {
       return true
@@ -98,7 +108,7 @@ class AddUser extends Component {
 
   render() {
     return (
-      <div className="main" style={{ width: window.innerWidth / 2 }}>
+      <div className="main" style={{ width: window.innerWidth / 2, paddingTop: '70px', color: 'black' }}>
 
         <h2>Add user</h2>
         <Form className="form" style={{ width: window.innerWidth / 2 }}>
@@ -116,7 +126,7 @@ class AddUser extends Component {
               />
             </FormGroup>
           </Col>
-          <Col>
+          {/* <Col>
             <FormGroup>
               <Label>Password</Label>
               <Input
@@ -129,7 +139,7 @@ class AddUser extends Component {
               // placeholder="********"
               />
             </FormGroup>
-          </Col>
+          </Col> */}
           <Col>
             <FormGroup>
               <Label>First Name</Label>

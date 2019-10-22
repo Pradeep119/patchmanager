@@ -9,6 +9,7 @@ import { patchcoloumn, approvetypedata, customStyles } from '../../util/Constant
 import { pending_patch_url, pending_patchid_url, headers, pending_update_url } from '../../config/ApiUrl'
 import Modal from 'react-modal';
 import PopupModal from '../../containers/PopUpModal/PopUpModal'
+import { da } from 'date-fns/esm/locale';
 
 
 export default class PatchApprover extends Component {
@@ -61,7 +62,7 @@ export default class PatchApprover extends Component {
   };
 
   saveData() {
-    
+
     this.saveUserData()
   }
 
@@ -71,25 +72,34 @@ export default class PatchApprover extends Component {
       "status": this.state.approvetype
     }
 
-    var url = pending_update_url + '/' + putbody.patch_id + '/' + putbody.status
-    var data = await getApi(url, headers)
+    if (putbody.status === 'approved' || putbody.status === 'rejected') {
+      var url = pending_update_url + '/' + putbody.patch_id + '/' + putbody.status
+      var data = await getApi(url, headers)
 
-    if (data === 'Success') {
-      var PopupMessage = ''
-      if (putbody.status === 'approved') {
-        PopupMessage = putbody.patch_id + ' Approved Succesfully'
-        this.setState({ modalIsOpen: true, ModalTypeError: false, ModalMessage: PopupMessage });
-      } else if (putbody.status === 'rejected') {
-        PopupMessage = putbody.patch_id + ' Rejected Succesfully'
-        this.setState({ modalIsOpen: true, ModalTypeError: false, ModalMessage: PopupMessage });
-      }else{
-        this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'Check Your Values' });
+
+      if (data === 'Success') {
+        var PopupMessage = ''
+        if (putbody.status === 'approved') {
+          PopupMessage = putbody.patch_id + ' Approved Succesfully'
+          this.setState({ modalIsOpen: true, ModalTypeError: false, ModalMessage: PopupMessage });
+        } else if (putbody.status === 'rejected') {
+          PopupMessage = putbody.patch_id + ' Rejected Succesfully'
+          this.setState({ modalIsOpen: true, ModalTypeError: false, ModalMessage: PopupMessage });
+        }
+       
+      } else if (data === 'Failed') {
+        this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'Check Your Patch Id' });
+      } else {
+        this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'Operation Failed , Check your internet connection' });
       }
+
       this.getAllPatches()
+
     } else {
-      this.getAllPatches()
-      this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'Operation Failed' });
+      this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'Check Your Status' });
     }
+
+    // window.location.reload();
 
   }
 
@@ -100,8 +110,8 @@ export default class PatchApprover extends Component {
 
         <div className='ComboBoxDiv'>
 
-          <div style={{display:'flex', flexDirection:'row'}}>
-            <h4 className='HeadingLabel'>Patch Id &nbsp;&nbsp;&nbsp;&nbsp;</h4>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <h4 className='HeadingLab this.getAllPatches()el'>Patch Id &nbsp;&nbsp;&nbsp;&nbsp;</h4>
             <Combobox
               data={this.state.patchIdArray}
               name="comboSelectedVal"
@@ -109,7 +119,7 @@ export default class PatchApprover extends Component {
             />
           </div>
 
-          <div style={{display:'flex', flexDirection:'row'}}>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
             <h4 className='HeadingLabel'>Status &nbsp;&nbsp;&nbsp;&nbsp;</h4>
             <Combobox
               data={approvetypedata}
@@ -122,8 +132,8 @@ export default class PatchApprover extends Component {
 
           <div className='SubmitbtnDiv'  >
             <Button onClick={() => this.saveData()} style={{ width: window.innerWidth / 5 }} >Submit</Button>
-          </div> 
-
+          </div>
+         
         </div>
 
 
