@@ -23,7 +23,7 @@ public class UserController {
     @PostMapping("/signup")
     public ApiResponse<User> saveUser(@RequestBody UserDto user){
 
-        System.out.println(userService.save(user));
+       // System.out.println(userService.save(user));
 
         return new ApiResponse<>(HttpStatus.OK.value(), "User saved successfully.",userService.save(user));
     }
