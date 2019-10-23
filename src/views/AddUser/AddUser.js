@@ -63,7 +63,9 @@ class AddUser extends Component {
         if (data.status == 200) {
           window.location.reload();
           this.setState({ modalIsOpen: true, ModalTypeError: false, ModalMessage: 'User Added Successfully' });
-        }
+        }else if (data.status == 500){
+          this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'User Added Failed' });
+	}
       } else {
         this.setState({ modalIsOpen: true, ModalTypeError: true, ModalMessage: 'User Type is incorrect' });
       }
